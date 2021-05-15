@@ -1,0 +1,58 @@
+@layout('main')
+@section('content')
+<h1 class="mb-3">Detalhes</h1>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <h5 class="card-title">Dados do Veículo</h5>
+                <p class="card-text">Placa: {{placa}}</p>
+                <p class="card-text">Chassi: {{chassi}}</p>                
+            </div>
+        </div>
+        <br>
+        <h5 class="card-title">Detalhes Recall</h5>
+        <div class="row">
+                    @if(recall)
+                        <div class="col-sm-6">
+                            <div class="card border-warning mb-3">
+                            <div class="card-header text-warning">
+                                Recall Pendente
+                            </div>
+                            <div class="card-body">
+                                @each(item in recall)
+                                    <strong class="card-title">{{item.codigo}} - {{item.descricao}}</strong>
+                                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
+                                @endeach
+                            </div>
+                            </div>
+                        </div>
+                    @endif
+                    @if(recall_realizado)
+                        <div class="col-sm-6">
+                            <div class="card border-success mb-3">
+                                <div class="card-header text-success">
+                                    Recall Realizado
+                                </div>
+                                <div class="card-body">
+                                    @each(item in recall_realizado)
+                                        <strong class="card-title">{{item.campanha}} - {{item.causa}}</strong>
+                                        <p class="card-text">Modelo: {{item.modelo}}
+                                        <br>Campanha: {{item.descricaoCampanha}}
+                                        <br>Concessionária: {{item.concessionaria}} - UF: {{item.ufConsessionaria}}
+                                        <br>Data Reparo: {{item.dataReparo}}</p>
+                                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
+                                    @endeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+        </div>
+    </div>
+</div>
+<br>
+<div class="d-grid gap-2 mx-auto">
+    <a class="btn btn-danger" href="/" role="button">Voltar</a>
+</div>
+
+@endsection

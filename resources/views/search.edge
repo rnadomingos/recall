@@ -1,0 +1,13 @@
+@layout('main')
+@section('content')
+<h1 class="mb-3">Consulta Recall</h1>
+<form action="/busca" method="GET">
+    <div class="mb-3">
+        <label for="">Chassi</label>
+        <input type="text" class="form-control" name="veiculo" placeholder="Insira o Chassi" value="">
+        
+    </div>
+    <button class="btn btn-danger" type="submit">Consultar Recall</button>
+
+</form>
+@endsection
